@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bankless Living — Reclaim Your Financial Freedom</title>
+    <meta name="description" content="The infrastructure guide for those who've outgrown the need for permission. Self-custody wallets, crypto-friendly banking, and global financial access.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="theme-color" content="#000000">
+    <style>
+        /* === RESET & BASE === */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-bg: #f4f8fb;
+            --gray-2: #f5f5f7;
+            --gray-3: #e8e8ed;
+            --gray-4: #86868b;
+            --blue: #1246c4;
+            --blue-hover: #0a3aa8;
+            --text: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-green: #2e7d32;
+            --border-radius: 980px;
+            --card-radius: 18px;
+            --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font);
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--text);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        img { max-width: 100%; display: block; }
+        
+        /* === NAVIGATION === */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .nav-inner {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-logo:hover { text-decoration: none; }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+        
+        .nav-dropdown { position: relative; display: inline-block; }
+        .nav-dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; color: var(--text-secondary); }
+        .nav-dropdown > a::after { content: ' ▾'; font-size: 11px; }
+        .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--white); border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 8px 0; min-width: 220px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 1001; }
+        .nav-dropdown:hover > a { color: var(--text); }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--text); white-space: nowrap; transition: background 0.15s; }
+        .nav-dropdown-menu a:hover { background: var(--gray-bg); color: var(--text); text-decoration: none; }
+        .nav-dropdown-section { padding: 8px 16px 4px; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-dropdown-divider { height: 1px; background: rgba(0,0,0,0.08); margin: 6px 0; }
+        
+        .nav-cta {
+            font-size: 14px;
+            color: var(--white) !important;
+            background: var(--blue);
+            padding: 8px 16px;
+            border-radius: 980px;
+            transition: background 0.2s;
+        }
+        
+        .nav-cta:hover { background: var(--blue-hover) !important; text-decoration: none !important; }
+        
+        /* === HERO === */
+        .hero {
+            padding: 140px 22px 100px;
+            text-align: center;
+            background: var(--white);
+        }
+        
+        .hero-eyebrow {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            letter-spacing: 0.01em;
+            margin-bottom: 16px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        .hero-sub {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.3;
+        }
+        
+        .hero-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            font-size: 17px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .btn-primary:hover { background: var(--blue-hover); text-decoration: none; color: var(--white); }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--blue);
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 0;
+        }
+        
+        .btn-secondary:hover { text-decoration: underline; }
+        
+        /* === SECTION STYLES === */
+        .section {
+            padding: 80px 22px;
+        }
+        
+        .section-gray { background: var(--gray-bg); }
+        .section-dark { background: var(--text); color: var(--white); }
+        
+        .section-inner {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+        
+        .section-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            font-size: 21px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.4;
+            margin-bottom: 50px;
+        }
+        
+        /* === CARDS / GRID === */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            border: 1px solid rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+        }
+        
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .card-link {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .card-link:hover { text-decoration: underline; }
+        
+        /* === FEATURE ROW === */
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin: 60px 0;
+        }
+        
+        .feature-row.reverse { direction: rtl; }
+        .feature-row.reverse > * { direction: ltr; }
+        
+        .feature-image {
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            background: var(--gray-bg);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .feature-content h3 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin-bottom: 14px;
+        }
+        
+        .feature-content p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* === TOOLS GRID === */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .tools-grid { grid-template-columns: 1fr; }
+            .feature-row { grid-template-columns: 1fr; gap: 30px; }
+            .feature-row.reverse { direction: ltr; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+        
+        .tool-card {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            padding: 32px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.2s;
+        }
+        
+        .tool-card:hover {
+            border-color: var(--blue);
+            box-shadow: 0 4px 20px rgba(18,70,196,0.1);
+        }
+        
+        .tool-card h4 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .tool-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--blue);
+            background: var(--gray-2);
+            padding: 8px 16px;
+            border-radius: 980px;
+            transition: all 0.2s;
+        }
+        
+        .tool-link:hover { background: var(--blue); color: var(--white); text-decoration: none; }
+        
+        /* === CTA BAND === */
+        .cta-band {
+            padding: 80px 22px;
+            text-align: center;
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .cta-band h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        
+        .cta-band p {
+            font-size: 21px;
+            color: rgba(255,255,255,0.7);
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+        
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            font-size: 17px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-white:hover { background: var(--gray-3); text-decoration: none; }
+        
+        /* === FOOTER === */
+        footer {
+            background: var(--gray-2);
+            padding: 50px 22px 40px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .footer-inner {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .footer-brand {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .footer-links a:hover { color: var(--text); text-decoration: none; }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .footer-copy {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .footer-social a {
+            font-size: 13px;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .footer-social a:hover { text-decoration: underline; }
+        
+        /* === PAGE HEADER (subpages) === */
+        .page-header {
+            padding: 140px 22px 80px;
+            text-align: center;
+            background: var(--white);
+        }
+        
+        .page-header h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        
+        .page-header p {
+            font-size: 21px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .page-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* === CONTENT STYLES === */
+        .prose { max-width: 720px; margin: 0 auto; }
+        .prose h2 { font-size: 30px; font-weight: 600; letter-spacing: -0.015em; margin: 50px 0 16px; }
+        .prose h3 { font-size: 22px; font-weight: 600; margin: 35px 0 12px; }
+        .prose p { font-size: 17px; line-height: 1.65; color: var(--text); margin-bottom: 16px; }
+        .prose ul { margin: 0 0 20px 20px; }
+        .prose li { font-size: 17px; line-height: 1.6; margin-bottom: 10px; }
+        .prose .highlight-box { background: var(--gray-bg); border-radius: var(--card-radius); padding: 28px; margin: 30px 0; }
+        .prose .highlight-box h3 { margin-top: 0; }
+        
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 120px 22px 80px; }
+            .section { padding: 60px 22px; }
+            .card { padding: 28px; }
+            .footer-top { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Bankless Living</a>
+            <ul class="nav-links">
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/best-self-custody-wallets-2026/">Guides</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">All Guides</div>
+                            <a href="/best-self-custody-wallets-2026/">Best Self-Custody Wallets 2026</a>
+                            <a href="/best-crypto-friendly-banks-2026/">Best Crypto-Friendly Banks 2026</a>
+                            <a href="/how-to-open-global-bank-account-2026/">How to Open a Global Bank Account</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/tools/crypto-banking-selector/">Tools</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">Interactive Tools</div>
+                            <a href="/tools/crypto-banking-selector/">Crypto Banking Selector</a>
+                            <a href="/tools/crypto-fiat-calculator/">Crypto vs Fiat Calculator</a>
+                            <a href="/tools/self-custody-quiz/">Self-Custody Quiz</a>
+                            <div class="nav-dropdown-divider"></div>
+                            <a href="/tools/wallet-comparison-matrix/">Wallet Comparison Matrix</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/#about">About</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/#about">About Bankless Living</a>
+                            <a href="https://app.trustyfy.com?by=101a44">About Trustyfy</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="https://app.trustyfy.com?by=101a44" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- HERO -->
+    <section class="hero">
+        <p class="hero-eyebrow">For Those Who Outgrew Permission</p>
+        <h1>Reclaim Your<br>Financial Freedom</h1>
+        <p class="hero-sub">The infrastructure guide for living beyond the reach of traditional banks. Self-custody wallets, crypto-friendly accounts, and global financial access — explained plainly.</p>
+        <div class="hero-links">
+            <a href="https://app.trustyfy.com?by=101a44" class="btn-primary">Explore Trustyfy →</a>
+            <a href="/best-self-custody-wallets-2026/" class="btn-secondary">Read the Guides →</a>
+        </div>
+    </section>
+    
+    <!-- WHAT IS BANKLESS LIVING -->
+    <section class="section section-gray" id="about">
+        <div class="section-inner">
+            <div class="feature-row">
+                <div class="feature-image">🌍</div>
+                <div class="feature-content">
+                    <h3>You shouldn't need a bank's permission to move your own money.</h3>
+                    <p>Traditional banks can freeze your account, decline transactions, and close your doors — based on algorithms, not people. Bankless Living is a knowledge platform that documents the alternative: financial infrastructure built on open protocols, self-custody, and global access.</p>
+                    <a href="/how-to-open-global-bank-account-2026/" class="btn-secondary">How to open a global account →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- GUIDES -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-eyebrow">Knowledge</div>
+            <h2 class="section-title">Start Here</h2>
+            <p class="section-subtitle">Three essential reads to understand the bankless ecosystem and where to start.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">💳</div>
+                    <h3>Best Self-Custody Wallets 2026</h3>
+                    <p>A complete comparison of non-custodial wallets across Ethereum, Bitcoin, and Solana — with honest scoring on security, ease of use, and multi-chain support.</p>
+                    <a href="/best-self-custody-wallets-2026/" class="card-link">Read Guide →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏦</div>
+                    <h3>Best Crypto-Friendly Banks 2026</h3>
+                    <p>Which banks actually support crypto users, and which ones will freeze your account the moment you touch a decentralized exchange? Our 2026 rankings with real data.</p>
+                    <a href="/best-crypto-friendly-banks-2026/" class="card-link">Read Guide →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>How to Open a Global Bank Account</h3>
+                    <p>Bank accounts without residency, without borders, without the usual restrictions. A practical guide for digital nomads, crypto users, and international business owners.</p>
+                    <a href="/how-to-open-global-bank-account-2026/" class="card-link">Read Guide →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TOOLS -->
+    <section class="section section-gray">
+        <div class="section-inner">
+            <div class="section-eyebrow">Interactive</div>
+            <h2 class="section-title">Tools & Calculators</h2>
+            <p class="section-subtitle">Put the knowledge to work. These tools help you make decisions in seconds.</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h4>🔍 Crypto Banking Selector</h4>
+                    <p>Answer 5 questions and get a personalized recommendation for the best platform for your specific needs.</p>
+                    <a href="/tools/crypto-banking-selector/" class="tool-link">Use Tool →</a>
+                </div>
+                <div class="tool-card">
+                    <h4>💸 Crypto vs Fiat Calculator</h4>
+                    <p>Compare the true cost of international transfers — crypto vs traditional wire. See exactly how much you save.</p>
+                    <a href="/tools/crypto-fiat-calculator/" class="tool-link">Use Tool →</a>
+                </div>
+                <div class="tool-card">
+                    <h4>📊 Self-Custody Quiz</h4>
+                    <p>How self-custody ready are you? Take the quiz to find your score and get a personalized improvement plan.</p>
+                    <a href="/tools/self-custody-quiz/" class="tool-link">Take Quiz →</a>
+                </div>
+                <div class="tool-card">
+                    <h4>⚖️ Wallet Comparison Matrix</h4>
+                    <p>Trustyfy vs MetaMask vs Juno vs Nexo — honest scoring across 10+ features. No bias, no fluff.</p>
+                    <a href="/tools/wallet-comparison-matrix/" class="tool-link">Compare →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- WHY TRUSTYF -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-eyebrow">Recommended Platform</div>
+            <h2 class="section-title">The Bankless-Friendly Banking Layer</h2>
+            <p class="section-subtitle">Trustyfy is the platform that matches the bankless ethos — self-custody, no freezes, global access, multi-chain support.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🔑</div>
+                    <h3>You Hold the Keys</h3>
+                    <p>Trustyfy never touches your funds. Self-custody wallets mean only you control the private keys — not the platform, not a bank.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>No Account Freezes</h3>
+                    <p>Clear policy: Trustyfy doesn't freeze accounts for crypto activity. Deposit from any exchange, interact with any DeFi protocol, hold any token.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💳</div>
+                    <h3>Global VISA Card</h3>
+                    <p>Available in 180+ countries. Spend your crypto anywhere in the world or convert to fiat with Super Swap — sent directly to any bank account.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3>No Residency Required</h3>
+                    <p>Open a global account from anywhere. Business accounts available. Multi-currency support: USD, EUR, GBP, and more.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://app.trustyfy.com?by=101a44" class="btn-primary">Open Free Account →</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA BAND -->
+    <section class="cta-band">
+        <h2>Ready to Break Free<br>from Traditional Banking?</h2>
+        <p>Start with the guides, use the tools, and open your first bankless-friendly account today.</p>
+        <a href="https://app.trustyfy.com?by=101a44" class="btn-white">Get Started with Trustyfy →</a>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <span class="footer-brand">Bankless Living</span>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/best-self-custody-wallets-2026/">Guides</a></li>
+                    <li><a href="/tools/crypto-banking-selector/">Tools</a></li>
+                    <li><a href="https://app.trustyfy.com?by=101a44">Trustyfy</a></li>
+                    <li><a href="https://t.me/TrustyfyCommunity">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Bankless Living Content Hub — Powered by <a href="https://bankless.living">Bankless.Living</a></span>
+                <div class="footer-social">
+                    <a href="https://x.com/getbankless" target="_blank" rel="noopener">Follow @getbankless on X</a>
+                    <a href="https://t.me/TrustyfyCommunity">Trustyfy Community</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Custody Quiz — Bankless Living</title>
+    <meta name="description" content="How self-custody ready are you? Take the quiz to find your score and get a personalized plan.">
+    <link rel="canonical" href="https://trustyfy-content.vercel.app/tools/self-custody-quiz/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --black: #000000; --white: #ffffff; --gray-bg: #f4f8fb; --gray-2: #f5f5f7; --gray-3: #e8e8ed; --gray-4: #86868b; --blue: #1246c4; --blue-hover: #0a3aa8; --text: #1d1d1f; --text-secondary: #86868b; --accent-green: #2e7d32; --border-radius: 980px; --card-radius: 18px; --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); font-size: 17px; line-height: 1.5; color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .nav-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-size: 21px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+        .nav-logo:hover { text-decoration: none; }
+.nav-dropdown { position: relative; display: inline-block; }
+        .nav-dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; color: var(--text-secondary); }
+        .nav-dropdown > a::after { content: ' ▾'; font-size: 11px; }
+        .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--white); border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 8px 0; min-width: 220px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 1001; }
+        .nav-dropdown:hover > a { color: var(--text); }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--text); white-space: nowrap; transition: background 0.15s; }
+        .nav-dropdown-menu a:hover { background: var(--gray-bg); color: var(--text); text-decoration: none; }
+        .nav-dropdown-section { padding: 8px 16px 4px; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-dropdown-divider { height: 1px; background: rgba(0,0,0,0.08); margin: 6px 0; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { font-size: 14px; color: var(--text-secondary); }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+        .nav-cta { font-size: 14px; color: var(--white) !important; background: var(--blue); padding: 8px 16px; border-radius: var(--border-radius); }
+        .nav-cta:hover { background: var(--blue-hover) !important; text-decoration: none !important; }
+        .page-header { padding: 140px 22px 80px; text-align: center; background: var(--white); }
+        .page-header h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px; }
+        .page-header p { font-size: 21px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px; }
+        .section { padding: 80px 22px; }
+        .section-gray { background: var(--gray-bg); }
+        .section-inner { max-width: 700px; margin: 0 auto; }
+        .section-eyebrow { font-size: 14px; font-weight: 600; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+        .quiz-step { background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: var(--card-radius); padding: 36px; margin-bottom: 20px; }
+        .quiz-step h3 { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option-btn { padding: 16px 20px; background: var(--gray-bg); border: 2px solid transparent; border-radius: 12px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--text); transition: all 0.2s; width: 100%; }
+        .option-btn:hover { border-color: var(--blue); background: #eff6ff; }
+        .score-display { text-align: center; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: var(--card-radius); padding: 50px; margin: 40px 0; }
+        .score-display .score-num { font-size: 80px; font-weight: 700; color: var(--accent-green); line-height: 1; }
+        .score-display .score-label { font-size: 20px; color: var(--text); margin-top: 12px; font-weight: 500; }
+        .rec-box { background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: var(--card-radius); padding: 32px; margin: 20px 0; }
+        .rec-box h4 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+        .rec-box ul { margin: 0; padding-left: 20px; }
+        .rec-box li { font-size: 16px; line-height: 1.6; margin-bottom: 8px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: var(--white); padding: 14px 28px; border-radius: var(--border-radius); font-size: 17px; font-weight: 500; transition: background 0.2s; }
+        .btn-primary:hover { background: var(--blue-hover); text-decoration: none; color: var(--white); }
+        footer { background: var(--gray-2); padding: 50px 22px 40px; border-top: 1px solid rgba(0,0,0,0.08); }
+        .footer-inner { max-width: 1024px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 30px; border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
+        .footer-brand { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+        .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+        .footer-links a { font-size: 13px; color: var(--text-secondary); }
+        .footer-links a:hover { color: var(--text); text-decoration: none; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-copy { font-size: 12px; color: var(--text-secondary); }
+        .footer-social { display: flex; gap: 16px; align-items: center; }
+        .footer-social a { font-size: 13px; color: var(--blue); display: flex; align-items: center; gap: 6px; }
+        .footer-social a:hover { text-decoration: underline; }
+        .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 14px; margin-bottom: 30px; }
+        .nav-back:hover { color: var(--text); text-decoration: none; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Bankless Living</a>
+
+            <ul class="nav-links">
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/best-self-custody-wallets-2026/">Guides</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">All Guides</div>
+                            <a href="/best-self-custody-wallets-2026/">Best Self-Custody Wallets 2026</a>
+                            <a href="/best-crypto-friendly-banks-2026/">Best Crypto-Friendly Banks 2026</a>
+                            <a href="/how-to-open-global-bank-account-2026/">How to Open a Global Bank Account</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/tools/crypto-banking-selector/">Tools</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">Interactive Tools</div>
+                            <a href="/tools/crypto-banking-selector/">Crypto Banking Selector</a>
+                            <a href="/tools/crypto-fiat-calculator/">Crypto vs Fiat Calculator</a>
+                            <a href="/tools/self-custody-quiz/">Self-Custody Quiz</a>
+                            <div class="nav-dropdown-divider"></div>
+                            <a href="/tools/wallet-comparison-matrix/">Wallet Comparison Matrix</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/#about">About</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/#about">About Bankless Living</a>
+                            <a href="https://app.trustyfy.com?by=101a44">About Trustyfy</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="https://app.trustyfy.com?by=101a44" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <a href="/" class="nav-back">Back to Home</a>
+        <h1>Self-Custody Quiz</h1>
+        <p>Find out how self-custody ready you are and get a personalized improvement plan.</p>
+    </header>
+    
+    <main>
+        <section class="section section-gray">
+            <div class="section-inner">
+                <div class="section-eyebrow">Interactive Tool</div>
+                
+                <div class="quiz-step" id="q1">
+                    <h3>1. Where do you store your crypto today?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="answer(1, 30)">Exchange (Binance, Kraken, Coinbase)</button>
+                        <button class="option-btn" onclick="answer(1, 60)">Custodial wallet (built into exchange)</button>
+                        <button class="option-btn" onclick="answer(1, 80)">Non-custodial wallet (MetaMask, Trust Wallet)</button>
+                        <button class="option-btn" onclick="answer(1, 100)">Hardware wallet (Ledger, Trezor)</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="q2" style="display:none;">
+                    <h3>2. Who controls your private keys?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="answer(2, 0)">I do not know / Not me</button>
+                        <button class="option-btn" onclick="answer(2, 50)">The exchange holds them</button>
+                        <button class="option-btn" onclick="answer(2, 100)">I hold my own keys</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="q3" style="display:none;">
+                    <h3>3. If your exchange froze your account tomorrow, how long could you survive?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="answer(3, 0)">Weeks or months — all my funds are stuck</button>
+                        <button class="option-btn" onclick="answer(3, 30)">A few days — some funds off-exchange</button>
+                        <button class="option-btn" onclick="answer(3, 80)">Hours — self-custody backups ready</button>
+                        <button class="option-btn" onclick="answer(3, 100)">No impact — full exit plan ready</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="q4" style="display:none;">
+                    <h3>4. How many copies of your seed phrase do you have?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="answer(4, 0)">I do not have one / do not use a wallet</button>
+                        <button class="option-btn" onclick="answer(4, 30)">One copy, stored at home</button>
+                        <button class="option-btn" onclick="answer(4, 70)">2-3 copies in different secure locations</button>
+                        <button class="option-btn" onclick="answer(4, 100)">Encrypted backup + safe deposit + trusted person</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-step" id="q5" style="display:none;">
+                    <h3>5. Can you access your wallet from any device?</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="finishQuiz(20)">Only from one specific device / location</button>
+                        <button class="option-btn" onclick="finishQuiz(50)">Yes, but same wallet software required</button>
+                        <button class="option-btn" onclick="finishQuiz(80)">Yes — wallet app, seed-protected</button>
+                        <button class="option-btn" onclick="finishQuiz(100)">Yes — multisig or social recovery too</button>
+                    </div>
+                </div>
+                
+                <div class="score-display" id="score-display" style="display:none;">
+                    <div class="score-num" id="score-num">--</div>
+                    <div class="score-label" id="score-label">of 100</div>
+                </div>
+                
+                <div class="rec-box" id="rec-box" style="display:none;">
+                    <h4>Your Personalized Recommendations</h4>
+                    <ul id="rec-list"></ul>
+                    <div style="margin-top: 24px; text-align: center;">
+                        <a href="https://app.trustyfy.com?by=101a44" class="btn-primary">Get Self-Custody with Trustyfy →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <span class="footer-brand">Bankless Living</span>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/best-self-custody-wallets-2026/">Guides</a></li>
+                    <li><a href="/tools/crypto-banking-selector/">Tools</a></li>
+                    <li><a href="https://app.trustyfy.com?by=101a44">Trustyfy</a></li>
+                    <li><a href="https://t.me/TrustyfyCommunity">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">2026 Bankless Living Content Hub — Powered by <a href="https://bankless.living">Bankless.Living</a></span>
+                <div class="footer-social">
+                    <a href="https://x.com/getbankless" target="_blank" rel="noopener">Follow @getbankless on X</a>
+                    <a href="https://t.me/TrustyfyCommunity">Trustyfy Community</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        let total = 0, count = 0;
+        function answer(q, val) {
+            total += val; count++;
+            document.getElementById('q' + q).style.display = 'none';
+            if (q < 5) document.getElementById('q' + (q + 1)).style.display = 'block';
+            else finishQuiz(val);
+        }
+        function finishQuiz(lastVal) {
+            total += lastVal; count++;
+            document.getElementById('q5').style.display = 'none';
+            const score = Math.round(total / count);
+            document.getElementById('score-display').style.display = 'block';
+            document.getElementById('score-num').textContent = score;
+            const label = score < 40 ? 'Beginner — Start with self-custody basics' :
+                          score < 70 ? 'Intermediate — Add backup layers' :
+                          'Advanced — Strong self-custody';
+            document.getElementById('score-label').textContent = label;
+            const recs = [];
+            if (score < 70) recs.push('Move funds off exchanges — use a non-custodial wallet like MetaMask or Trust Wallet');
+            if (score < 50) recs.push('Write down your seed phrase and store it in a safe location');
+            if (score >= 50) recs.push('Consider a hardware wallet for maximum security on long-term holdings');
+            recs.push('Use Trustyfy self-custody wallets — you control your keys, Trustyfy never touches funds');
+            document.getElementById('rec-list').innerHTML = recs.map(r => '<li>' + r + '</li>').join('');
+            document.getElementById('rec-box').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

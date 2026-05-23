@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Crypto Banking Solution | Trustyfy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .fade-up { animation: fadeUp 0.6s ease-out both; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .step-line { position: relative; }
+        .step-line::after { content: ''; position: absolute; top: 40px; left: 50%; width: 2px; height: 60px; background: linear-gradient(to bottom, #6366f1, transparent); }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-100 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="text-xl font-extrabold text-slate-900">Trustyfy</div>
+            <a href="https://app.trustyfy.com?by=101a44" target="_blank" class="bg-indigo-600 text-white px-5 py-2 rounded-xl font-semibold hover:bg-indigo-700 transition-colors text-sm">
+                Get Started
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-gradient text-white pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium mb-8 fade-up">
+                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                Crypto-Friendly Self-Custody Banking
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 fade-up" style="animation-delay:0.1s">
+                Stop Searching.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Start Transacting.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 fade-up" style="animation-delay:0.2s">
+                The all-in-one crypto banking platform. Self-custody security. VISA card spending. Multi-chain support. One link to rule them all.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up" style="animation-delay:0.3s">
+                <a href="https://app.trustyfy.com?by=101a44" target="_blank" class="bg-indigo-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-600 transition-colors shadow-lg shadow-indigo-500/30 text-lg">
+                    Open Free Account →
+                </a>
+                <a href="#features" class="border border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors text-lg">
+                    See Features
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems -->
+    <section class="py-20 px-4 bg-slate-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Sound Familiar?</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">The crypto banking landscape is broken. Here's what users deal with every day.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover">
+                    <div class="text-4xl mb-4">😤</div>
+                    <h3 class="font-bold text-slate-900 mb-2">"I have to choose between security AND convenience"</h3>
+                    <p class="text-slate-500 text-sm">Self-custody wallets are safe but clunky. Exchanges are easy but custodial. Why can't I have both?</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover">
+                    <div class="text-4xl mb-4">💸</div>
+                    <h3 class="font-bold text-slate-900 mb-2">"Bank fees eat up my international transfers"</h3>
+                    <p class="text-slate-500 text-sm">SWIFT fees, exchange markups, and slow wire transfers. Sending crypto should be cheap and fast.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover">
+                    <div class="text-4xl mb-4">🔐</div>
+                    <h3 class="font-bold text-slate-900 mb-2">"I don't really own my crypto on exchanges"</h3>
+                    <p class="text-slate-500 text-sm">Not your keys, not your coins. But managing your own keys is intimidating. There must be a middle ground.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="py-20 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        The Solution
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+                        Trustyfy bridges the gap between<br>
+                        <span class="text-indigo-600">security and simplicity</span>
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                        Trustyfy is a crypto-friendly self-custody banking platform. You control your keys, but with the convenience of a modern bank. Spend with VISA, send globally, hold securely — all in one place.
+                    </p>
+                    <a href="https://app.trustyfy.com?by=101a44" target="_blank" class="inline-block bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-lg">
+                        Start Using Trustyfy →
+                    </a>
+                </div>
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl p-8">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">TF</div>
+                                <div>
+                                    <p class="font-bold text-slate-900">Your Wallet</p>
+                                    <p class="text-sm text-emerald-500">● Self-Custody Active</p>
+                                </div>
+                            </div>
+                            <div class="text-3xl font-extrabold text-slate-900 mb-4">$12,450.00</div>
+                            <div class="flex gap-2 flex-wrap mb-4">
+                                <span class="bg-slate-100 px-3 py-1 rounded-full text-xs font-medium text-slate-600">ETH</span>
+                                <span class="bg-slate-100 px-3 py-1 rounded-full text-xs font-medium text-slate-600">BTC</span>
+                                <span class="bg-slate-100 px-3 py-1 rounded-full text-xs font-medium text-slate-600">USDC</span>
+                                <span class="bg-slate-100 px-3 py-1 rounded-full text-xs font-medium text-slate-600">+12 more</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="flex-1 bg-indigo-600 text-white py-2 rounded-lg font-semibold text-sm">Send</button>
+                                <button class="flex-1 bg-emerald-500 text-white py-2 rounded-lg font-semibold text-sm">VISA Card</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="features" class="py-20 px-4 bg-slate-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">How It Works</h2>
+                <p class="text-slate-500">Three simple steps to better crypto banking</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center step-line">
+                    <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 relative z-10">1</div>
+                    <h3 class="font-bold text-xl text-slate-900 mb-2">Create Your Account</h3>
+                    <p class="text-slate-500">Sign up and set up your self-custody wallet in minutes. Your keys, your coins.</p>
+                </div>
+                <div class="text-center step-line">
+                    <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4 relative z-10">2</div>
+                    <h3 class="font-bold text-xl text-slate-900 mb-2">Add Funds and Cards</h3>
+                    <p class="text-slate-500">Connect your crypto or buy directly. Get your VISA card for everyday spending.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-4">3</div>
+                    <h3 class="font-bold text-xl text-slate-900 mb-2">Transact Freely</h3>
+                    <p class="text-slate-500">Send globally, spend locally, hold securely. No middlemen, no limits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="py-20 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Everything You Need</h2>
+                <p class="text-slate-500">Built for real-world crypto banking</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 border border-slate-100 card-hover">
+                    <div class="text-3xl mb-3">🔐</div>
+                    <h3 class="font-bold text-slate-900 mb-2">True Self-Custody</h3>
+                    <p class="text-sm text-slate-500">You control your private keys. We never have access to your funds.</p>
+                </div>
+                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 border border-slate-100 card-hover">
+                    <div class="text-3xl mb-3">💳</div>
+                    <h3 class="font-bold text-slate-900 mb-2">VISA Card</h3>
+                    <p class="text-sm text-slate-500">Spend crypto anywhere VISA is accepted. Instant conversion, no hassle.</p>
+                </div>
+                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 border border-slate-100 card-hover">
+                    <div class="text-3xl mb-3">⛓️</div>
+                    <h3 class="font-bold text-slate-900 mb-2">Multi-Chain Support</h3>
+                    <p class="text-sm text-slate-500">ETH, BTC, SOL, and more. Manage all your assets in one place.</p>
+                </div>
+                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 border border-slate-100 card-hover">
+                    <div class="text-3xl mb-3">🌍</div>
+                    <h3 class="font-bold text-slate-900 mb-2">Global Transfers</h3>
+                    <p class="text-sm text-slate-500">Send crypto anywhere in the world in minutes. Flat fees, no hidden costs.</p>
+                </div>
+                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 border border-slate-100 card-hover">
+                    <div class="text-3xl mb-3">📱</div>
+                    <h3 class="font-bold text-slate-900 mb-2">Mobile App</h3>
+                    <p class="text-sm text-slate-500">Full-featured iOS and Android apps. Banking on the go.</p>
+                </div>
+                <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 border border-slate-100 card-hover">
+                    <div class="text-3xl mb-3">🇪🇺</div>
+                    <h3 class="font-bold text-slate-900 mb-2">EU Banking</h3>
+                    <p class="text-sm text-slate-500">Full EU account support with SEPA transfers and local IBANs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-4 bg-slate-900">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">What Users Say</h2>
+                <p class="text-slate-400">Real feedback from the Trustyfy community</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-slate-200 mb-4">"Finally a platform that gets it right. Self-custody without the headache. I can send money to my family in EU instantly."</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white text-xs font-bold">M</div>
+                        <span class="text-slate-400 text-sm">@martin_crypto</span>
+                    </div>
+                </div>
+                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-slate-200 mb-4">"The VISA card is a game changer. I pay for everything with crypto and it's so smooth. Rewards are decent too."</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white text-xs font-bold">S</div>
+                        <span class="text-slate-400 text-sm">@sarah_defi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">FAQ</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-white rounded-xl border border-slate-200 p-5 group">
+                    <summary class="font-semibold text-slate-900 cursor-pointer flex justify-between items-center">
+                        Is Trustyfy really self-custody?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-500 mt-3 text-sm">Yes. Trustyfy uses a non-custodial architecture where you control your private keys. We never have access to your funds.</p>
+                </details>
+                <details class="bg-white rounded-xl border border-slate-200 p-5 group">
+                    <summary class="font-semibold text-slate-900 cursor-pointer flex justify-between items-center">
+                        Where is Trustyfy available?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-500 mt-3 text-sm">Trustyfy is available in the EU with full banking features. US users have limited access. Check our website for the latest availability.</p>
+                </details>
+                <details class="bg-white rounded-xl border border-slate-200 p-5 group">
+                    <summary class="font-semibold text-slate-900 cursor-pointer flex justify-between items-center">
+                        What chains does Trustyfy support?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-500 mt-3 text-sm">Trustyfy supports Ethereum, Bitcoin, Solana, Polygon, and many other EVM-compatible chains. Full list on our website.</p>
+                </details>
+                <details class="bg-white rounded-xl border border-slate-200 p-5 group">
+                    <summary class="font-semibold text-slate-900 cursor-pointer flex justify-between items-center">
+                        Is there a VISA card fee?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-500 mt-3 text-sm">Trustyfy offers a VISA card with competitive fees. Exact pricing varies by region. Check the app for current fee schedule.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-600">
+        <div class="max-w-3xl mx-auto text-center text-white">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Ready to Take Control?</h2>
+            <p class="text-indigo-100 text-lg mb-10 max-w-xl mx-auto">Join thousands of users who've upgraded to self-custody banking. It takes less than 5 minutes.</p>
+            <a href="https://app.trustyfy.com?by=101a44" target="_blank" class="inline-block bg-white text-indigo-600 font-bold px-10 py-4 rounded-xl hover:bg-indigo-50 transition-colors shadow-xl text-lg">
+                Open Your Trustyfy Account →
+            </a>
+            <p class="text-indigo-200 text-sm mt-4">Use our referral link for exclusive benefits</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-12 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <div class="text-xl font-extrabold text-white mb-2">Trustyfy</div>
+                    <p class="text-slate-400 text-sm">Crypto-friendly self-custody banking.</p>
+                </div>
+                <div class="flex gap-6 text-sm text-slate-400">
+                    <a href="https://app.trustyfy.com?by=101a44" target="_blank" class="hover:text-white transition-colors">Website</a>
+                    <span>|</span>
+                    <span>Referral: trustyfy.com?by=101a44</span>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-slate-500 text-sm">
+                <p>This page contains affiliate links. DYOR before making financial decisions.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

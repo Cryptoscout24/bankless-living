@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Comparison Matrix — Bankless Living</title>
+    <meta name="description" content="Trustyfy vs MetaMask vs Juno vs Nexo — honest scoring across 10+ features.">
+    <link rel="canonical" href="https://trustyfy-content.vercel.app/tools/wallet-comparison-matrix/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --black: #000000; --white: #ffffff; --gray-bg: #f4f8fb; --gray-2: #f5f5f7; --gray-3: #e8e8ed; --gray-4: #86868b; --blue: #1246c4; --blue-hover: #0a3aa8; --text: #1d1d1f; --text-secondary: #86868b; --accent-green: #2e7d32; --border-radius: 980px; --card-radius: 18px; --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); font-size: 17px; line-height: 1.5; color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .nav-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-size: 21px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+        .nav-logo:hover { text-decoration: none; }
+.nav-dropdown { position: relative; display: inline-block; }
+        .nav-dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; color: var(--text-secondary); }
+        .nav-dropdown > a::after { content: ' ▾'; font-size: 11px; }
+        .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--white); border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 8px 0; min-width: 220px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 1001; }
+        .nav-dropdown:hover > a { color: var(--text); }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--text); white-space: nowrap; transition: background 0.15s; }
+        .nav-dropdown-menu a:hover { background: var(--gray-bg); color: var(--text); text-decoration: none; }
+        .nav-dropdown-section { padding: 8px 16px 4px; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-dropdown-divider { height: 1px; background: rgba(0,0,0,0.08); margin: 6px 0; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { font-size: 14px; color: var(--text-secondary); }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+        .nav-cta { font-size: 14px; color: var(--white) !important; background: var(--blue); padding: 8px 16px; border-radius: var(--border-radius); }
+        .nav-cta:hover { background: var(--blue-hover) !important; text-decoration: none !important; }
+        .page-header { padding: 140px 22px 80px; text-align: center; background: var(--white); }
+        .page-header h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px; }
+        .page-header p { font-size: 21px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px; }
+        .section { padding: 80px 22px; }
+        .section-gray { background: var(--gray-bg); }
+        .section-inner { max-width: 1024px; margin: 0 auto; }
+        .section-eyebrow { font-size: 14px; font-weight: 600; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+        .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 40px; }
+        .table-wrap { overflow-x: auto; margin: 30px 0; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { background: var(--text); color: var(--white); padding: 14px 18px; text-align: left; font-size: 14px; font-weight: 600; }
+        th:first-child { border-radius: 12px 0 0 0; }
+        th:last-child { border-radius: 0 12px 0 0; }
+        td { padding: 14px 18px; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 14px; vertical-align: middle; }
+        tr:nth-child(even) { background: var(--gray-bg); }
+        tr:hover { background: #e8f5e9; }
+        .check { color: var(--accent-green); font-weight: 600; }
+        .cross { color: #c62828; }
+        .partial { color: #f57c00; }
+        .badge { display: inline-block; background: var(--accent-green); color: white; padding: 2px 10px; border-radius: 980px; font-size: 12px; font-weight: 600; margin-left: 8px; }
+        .highlight-box { background: #e8f5e9; border-left: 4px solid var(--accent-green); border-radius: 0 var(--card-radius) var(--card-radius) 0; padding: 28px; margin: 30px 0; }
+        .highlight-box h3 { font-size: 19px; font-weight: 600; margin-bottom: 10px; }
+        .highlight-box p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: var(--white); padding: 14px 28px; border-radius: var(--border-radius); font-size: 17px; font-weight: 500; transition: background 0.2s; }
+        .btn-primary:hover { background: var(--blue-hover); text-decoration: none; color: var(--white); }
+        footer { background: var(--gray-2); padding: 50px 22px 40px; border-top: 1px solid rgba(0,0,0,0.08); }
+        .footer-inner { max-width: 1024px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 30px; border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
+        .footer-brand { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+        .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+        .footer-links a { font-size: 13px; color: var(--text-secondary); }
+        .footer-links a:hover { color: var(--text); text-decoration: none; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-copy { font-size: 12px; color: var(--text-secondary); }
+        .footer-social { display: flex; gap: 16px; align-items: center; }
+        .footer-social a { font-size: 13px; color: var(--blue); display: flex; align-items: center; gap: 6px; }
+        .footer-social a:hover { text-decoration: underline; }
+        .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 14px; margin-bottom: 30px; }
+        .nav-back:hover { color: var(--text); text-decoration: none; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Bankless Living</a>
+
+            <ul class="nav-links">
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/best-self-custody-wallets-2026/">Guides</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">All Guides</div>
+                            <a href="/best-self-custody-wallets-2026/">Best Self-Custody Wallets 2026</a>
+                            <a href="/best-crypto-friendly-banks-2026/">Best Crypto-Friendly Banks 2026</a>
+                            <a href="/how-to-open-global-bank-account-2026/">How to Open a Global Bank Account</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/tools/crypto-banking-selector/">Tools</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">Interactive Tools</div>
+                            <a href="/tools/crypto-banking-selector/">Crypto Banking Selector</a>
+                            <a href="/tools/crypto-fiat-calculator/">Crypto vs Fiat Calculator</a>
+                            <a href="/tools/self-custody-quiz/">Self-Custody Quiz</a>
+                            <div class="nav-dropdown-divider"></div>
+                            <a href="/tools/wallet-comparison-matrix/">Wallet Comparison Matrix</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/#about">About</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/#about">About Bankless Living</a>
+                            <a href="https://app.trustyfy.com?by=101a44">About Trustyfy</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="https://app.trustyfy.com?by=101a44" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <a href="/" class="nav-back">Back to Home</a>
+        <h1>Wallet Comparison Matrix</h1>
+        <p>Trustyfy vs MetaMask vs Juno vs Nexo — honest scoring across 10+ features. No bias.</p>
+    </header>
+    
+    <main>
+        <section class="section section-gray">
+            <div class="section-inner">
+                <div class="section-eyebrow">Interactive Tool</div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Trustyfy</th>
+                                <th>MetaMask</th>
+                                <th>Juno</th>
+                                <th>Nexo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Self-Custody</strong></td>
+                                <td><span class="check">Full</span></td>
+                                <td><span class="check">Full</span></td>
+                                <td><span class="check">Full</span></td>
+                                <td><span class="cross">Custodial</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multi-Chain</strong></td>
+                                <td><span class="check">ETH, BTC, SOL, MATIC +</span></td>
+                                <td><span class="partial">ETH, BSC, Polygon</span></td>
+                                <td><span class="partial">Limited</span></td>
+                                <td><span class="partial">ETH only</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>No Account Freezes</strong></td>
+                                <td><span class="check">Never</span></td>
+                                <td><span class="check">Cant freeze</span></td>
+                                <td><span class="check">Cant freeze</span></td>
+                                <td><span class="cross">Can freeze</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Global VISA Card</strong></td>
+                                <td><span class="check">Available</span></td>
+                                <td><span class="cross">None</span></td>
+                                <td><span class="check">Available</span></td>
+                                <td><span class="check">Available</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>SWIFT / Bank Integration</strong></td>
+                                <td><span class="check">Full SWIFT + USDC bridge</span></td>
+                                <td><span class="cross">No bank integration</span></td>
+                                <td><span class="partial">Limited</span></td>
+                                <td><span class="check">Available</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Beginner Friendly</strong></td>
+                                <td><span class="check">Very easy</span></td>
+                                <td><span class="partial">Medium</span></td>
+                                <td><span class="check">Easy</span></td>
+                                <td><span class="check">Easy</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business Account</strong></td>
+                                <td><span class="check">Yes</span></td>
+                                <td><span class="cross">No</span></td>
+                                <td><span class="cross">No</span></td>
+                                <td><span class="partial">Limited</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>No KYC for Self-Custody</strong></td>
+                                <td><span class="check">Self-custody without KYC</span></td>
+                                <td><span class="check">No KYC</span></td>
+                                <td><span class="check">No KYC</span></td>
+                                <td><span class="cross">Full KYC required</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Insurance on Holdings</strong></td>
+                                <td><span class="cross">Not insured</span></td>
+                                <td><span class="cross">Not insured</span></td>
+                                <td><span class="cross">Not insured</span></td>
+                                <td><span class="check">FDIC on cash</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interest / Staking</strong></td>
+                                <td><span class="cross">None</span></td>
+                                <td><span class="partial">Via DeFi</span></td>
+                                <td><span class="partial">Via Juno Earn</span></td>
+                                <td><span class="check">Up to 12% APY</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Overall Score</strong></td>
+                                <td><strong>9.2/10</strong> <span class="badge">BEST</span></td>
+                                <td><strong>7.0/10</strong></td>
+                                <td><strong>7.5/10</strong></td>
+                                <td><strong>6.0/10</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-inner">
+                <div class="highlight-box">
+                    <h3>Why Trustyfy Ranks Highest</h3>
+                    <p>Most wallets give you self-custody OR banking features. Trustyfy gives you both: you hold your keys AND you get global banking — VISA card, SWIFT transfers, multi-currency, business accounts. The only platform that combines bankless ethos with real-world banking utility.</p>
+                </div>
+                <div style="text-align:center; margin-top: 40px;">
+                    <a href="https://app.trustyfy.com?by=101a44" class="btn-primary">Try Trustyfy Free</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <span class="footer-brand">Bankless Living</span>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/best-self-custody-wallets-2026/">Guides</a></li>
+                    <li><a href="/tools/crypto-banking-selector/">Tools</a></li>
+                    <li><a href="https://app.trustyfy.com?by=101a44">Trustyfy</a></li>
+                    <li><a href="https://t.me/TrustyfyCommunity">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">2026 Bankless Living Content Hub</span>
+                <div class="footer-social">
+                    <a href="https://x.com/getbankless">Follow @getbankless on X</a>
+                    <a href="https://t.me/TrustyfyCommunity">Trustyfy Community</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
