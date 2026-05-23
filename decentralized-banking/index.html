@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized Banking — Financial Infrastructure Without Banks</title>
+    <meta name="description" content="Decentralized banking runs on blockchain protocols instead of traditional banks. Send, hold, and spend money globally without permission, intermediaries, or freezes.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:title" content="Decentralized Banking — Financial Infrastructure Without Banks">
+    <meta property="og:description" content="Decentralized banking runs on blockchain protocols instead of traditional banks. Send, hold, and spend money globally without permission, intermediaries, or freezes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bankless.living/decentralized-banking/">
+    <meta property="og:image" content="https://bankless.living/images/og-default.png">
+    <meta property="og:site_name" content="Bankless Living">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@getbankless">
+    <meta name="twitter:title" content="Decentralized Banking — Financial Infrastructure Without Banks">
+    <meta name="twitter:description" content="Decentralized banking runs on blockchain protocols instead of traditional banks. Send, hold, and spend money globally without permission, intermediaries, or freezes.">
+    <meta name="twitter:image" content="https://bankless.living/images/og-default.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is decentralized banking?","acceptedAnswer":{"@type":"Answer","text":"Decentralized banking is financial infrastructure built on blockchain protocols that operates without traditional banks. Users hold their own funds in self-custody wallets and interact through open, permissionless networks."}},{"@type":"Question","name":"How is decentralized banking different from traditional banking?","acceptedAnswer":{"@type":"Answer","text":"Traditional banking is centralized — banks hold your money and can restrict access. Decentralized banking is distributed — users hold their own funds and no single authority can freeze or control access."}},{"@type":"Question","name":"Is decentralized banking safe?","acceptedAnswer":{"@type":"Answer","text":"Decentralized banking is safe when users follow security best practices: protecting private keys, using reputable platforms, and avoiding scams. The technology itself is highly secure due to blockchain encryption."}},{"@type":"Question","name":"Can I use decentralized banking for business?","acceptedAnswer":{"@type":"Answer","text":"Yes. Decentralized banking is particularly powerful for businesses — enabling fast, low-cost international payments, transparent transaction records, and financial infrastructure that doesn't freeze based on crypto activity."}}]}</script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-bg: #f4f8fb;
+            --gray-2: #f5f5f7;
+            --gray-3: #e8e8ed;
+            --gray-4: #86868b;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --blue: #1246c6;
+            --blue-hover: #0f38a8;
+            --green: #2e7d32;
+            --border-radius: 18px;
+            --max-width: 1040px;
+            --section-padding: 80px;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-size: 18px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { font-size: 14px; color: var(--text-secondary); transition: color 0.2s; text-decoration: none; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { background: var(--blue); color: var(--white) !important; padding: 8px 16px; border-radius: var(--border-radius); font-size: 14px !important; transition: background 0.2s; }
+        .nav-cta:hover { background: var(--blue-hover); text-decoration: none !important; }
+        .nav-dropdown { position: relative; display: inline-block; }
+        .nav-dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; color: var(--text-secondary); }
+        .nav-dropdown > a::after { content: ' ▾'; font-size: 11px; }
+        .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--white); border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 8px 0; min-width: 220px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 1001; }
+        .nav-dropdown:hover > a { color: var(--text); }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--text); white-space: nowrap; transition: background 0.15s; }
+        .nav-dropdown-menu a:hover { background: var(--gray-bg); text-decoration: none; }
+        .nav-dropdown-section { padding: 8px 16px 4px; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-dropdown-divider { height: 1px; background: rgba(0,0,0,0.08); margin: 6px 0; }
+        .hero { padding: 160px 24px var(--section-padding); text-align: center; background: var(--white); }
+        .hero-label { display: inline-block; font-size: 12px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; padding: 6px 12px; background: rgba(18,70,198,0.08); border-radius: 100px; }
+        h1 { font-size: clamp(40px, 7vw, 72px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--text); margin-bottom: 20px; }
+        .hero-sub { font-size: clamp(18px, 2.5vw, 22px); color: var(--text-secondary); max-width: 620px; margin: 0 auto 40px; line-height: 1.5; }
+        .hero-cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .btn-primary { display: inline-block; background: var(--blue); color: var(--white); padding: 14px 28px; border-radius: var(--border-radius); font-size: 16px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+        .btn-primary:hover { background: var(--blue-hover); text-decoration: none; transform: translateY(-1px); }
+        .btn-secondary { display: inline-block; background: var(--gray-bg); color: var(--text); padding: 14px 28px; border-radius: var(--border-radius); font-size: 16px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+        .btn-secondary:hover { background: var(--gray-2); text-decoration: none; }
+        .stats-bar { background: var(--gray-bg); padding: 48px 24px; text-align: center; }
+        .stats-grid { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; max-width: var(--max-width); margin: 0 auto; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 36px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+        .stat-label { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+        .content-wrap { max-width: var(--max-width); margin: 0 auto; padding: var(--section-padding) 24px; }
+        .content-section { margin-bottom: 64px; padding-bottom: 64px; border-bottom: 1px solid var(--gray-3); }
+        .content-section:last-child { border-bottom: none; }
+        .content-section h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--text); }
+        .section-text { font-size: 17px; color: var(--text-secondary); line-height: 1.7; max-width: 720px; }
+        .text-link { display: inline-block; margin-top: 16px; color: var(--blue); font-size: 15px; font-weight: 500; text-decoration: none; }
+        .text-link:hover { text-decoration: underline; }
+        .trust-section { padding: var(--section-padding) 24px; background: var(--white); text-align: center; }
+        .trust-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .trust-section p { font-size: 18px; color: var(--text-secondary); max-width: 560px; margin: 0 auto 32px; }
+        .faq-section { background: var(--gray-bg); padding: var(--section-padding) 24px; }
+        .faq-section h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; text-align: center; margin-bottom: 48px; }
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { background: var(--white); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+        .faq-item h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+        .faq-item p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+        footer { background: var(--gray-bg); padding: 48px 24px; border-top: 1px solid var(--gray-3); }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 30px; border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
+        .footer-brand { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+        .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+        .footer-links a { font-size: 13px; color: var(--text-secondary); }
+        .footer-links a:hover { color: var(--text); text-decoration: none; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .footer-copy { font-size: 12px; color: var(--text-secondary); }
+        .footer-social { display: flex; gap: 16px; align-items: center; }
+        .footer-social a { font-size: 13px; color: var(--blue); display: flex; align-items: center; gap: 6px; }
+        .footer-social a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero { padding: 120px 24px 60px; } .content-wrap { padding: 60px 24px; } .stats-grid { gap: 32px; } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Bankless Living</a>
+            <ul class="nav-links">
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/best-self-custody-wallets-2026/">Guides</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">All Guides</div>
+                            <a href="/best-self-custody-wallets-2026/">Best Self-Custody Wallets 2026</a>
+                            <a href="/best-crypto-friendly-banks-2026/">Best Crypto-Friendly Banks 2026</a>
+                            <a href="/how-to-open-global-bank-account-2026/">How to Open a Global Bank Account</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/tools/crypto-banking-selector/">Tools</a>
+                        <div class="nav-dropdown-menu">
+                            <div class="nav-dropdown-section">Interactive Tools</div>
+                            <a href="/tools/crypto-banking-selector/">Crypto Banking Selector</a>
+                            <a href="/tools/crypto-fiat-calculator/">Crypto vs Fiat Calculator</a>
+                            <a href="/tools/self-custody-quiz/">Self-Custody Quiz</a>
+                            <div class="nav-dropdown-divider"></div>
+                            <a href="/tools/wallet-comparison-matrix/">Wallet Comparison Matrix</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="/#about">About</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/#about">About Bankless Living</a>
+                            <a href="https://app.trustyfy.com?by=101a44">About Trustyfy</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="https://app.trustyfy.com?by=101a44" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <span class="hero-label">Guide</span>
+        <h1>Decentralized Banking</h1>
+        <p class="hero-sub">Decentralized banking runs on blockchain protocols instead of traditional banks. Send, hold, and spend money globally without permission, intermediaries, or freezes.</p>
+        <div class="hero-cta">
+            <a href="https://app.trustyfy.com?by=101a44" class="btn-primary">Open Free Account</a>
+            <a href="/" class="btn-secondary">Back to Home</a>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item"><div class="stat-value">180+</div><div class="stat-label">Countries Supported</div></div>
+            <div class="stat-item"><div class="stat-value">$0</div><div class="stat-label">Account Freeze Policy</div></div>
+            <div class="stat-item"><div class="stat-value">&lt;5min</div><div class="stat-label">Global Transfers</div></div>
+            <div class="stat-item"><div class="stat-value">0</div><div class="stat-label">Residency Requirements</div></div>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+        
+            <div class="content-section">
+                <h2>Banking Without the Bank</h2>
+                <p class="section-text">Decentralized banking replaces traditional financial infrastructure with blockchain protocols. Instead of banks holding your money, open networks verify and settle transactions.</p><p class="section-text">You hold your own funds in self-custody wallets. Transactions are verified by distributed networks — no single authority can freeze your account or deny a payment.</p>
+                
+            </div>
+            <div class="content-section">
+                <h2>The Core Principles of Decentralized Finance</h2>
+                <p class="section-text">Open access: Anyone with an internet connection can participate.<br>Self-custody: You hold your own funds — not a bank.<br>Transparency: All transactions are verifiable on-chain.<br>Censorship resistance: No single authority can restrict your access.<br>Global reach: Send money anywhere without correspondent banks.</p>
+                
+            </div>
+            <div class="content-section">
+                <h2>Decentralized Banking in Practice</h2>
+                <p class="section-text">Hold stablecoins in non-custody wallets.<br>Use decentralized exchanges to convert assets.<br>Pay globally via stablecoin transfers.<br>Spend via crypto-linked Visa cards.<br>Access fiat conversion through non-bank platforms.</p>
+                
+            </div>
+    </div>
+
+    <div class="trust-section">
+        <h2>The Bankless-Friendly Banking Layer</h2>
+        <p>Trustyfy is the platform that matches the bankless ethos — self-custody, no freezes, global access, multi-chain support.</p>
+        <a href="https://app.trustyfy.com?by=101a44" class="btn-primary">Open Free Account</a>
+    </div>
+
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            
+            <div class="faq-item">
+                <h3>What is decentralized banking?</h3>
+                <p>Decentralized banking is financial infrastructure built on blockchain protocols that operates without traditional banks. Users hold their own funds in self-custody wallets and interact through open, permissionless networks.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is decentralized banking different from traditional banking?</h3>
+                <p>Traditional banking is centralized — banks hold your money and can restrict access. Decentralized banking is distributed — users hold their own funds and no single authority can freeze or control access.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is decentralized banking safe?</h3>
+                <p>Decentralized banking is safe when users follow security best practices: protecting private keys, using reputable platforms, and avoiding scams. The technology itself is highly secure due to blockchain encryption.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I use decentralized banking for business?</h3>
+                <p>Yes. Decentralized banking is particularly powerful for businesses — enabling fast, low-cost international payments, transparent transaction records, and financial infrastructure that doesn't freeze based on crypto activity.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <span class="footer-brand">Bankless Living</span>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/best-self-custody-wallets-2026/">Guides</a></li>
+                    <li><a href="/tools/crypto-banking-selector/">Tools</a></li>
+                    <li><a href="https://app.trustyfy.com?by=101a44">Trustyfy</a></li>
+                    <li><a href="https://t.me/TrustyfyCommunity">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Bankless Living Content Hub — Powered by <a href="https://bankless.living">Bankless.Living</a></span>
+                <div class="footer-social">
+                    <a href="https://x.com/getbankless" target="_blank">Follow @getbankless on X</a>
+                    <a href="https://t.me/TrustyfyCommunity">Trustyfy Community</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
